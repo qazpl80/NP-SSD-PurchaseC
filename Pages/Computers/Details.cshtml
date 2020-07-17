@@ -1,0 +1,79 @@
+﻿@page
+@model PurchaseC.Pages.Computers.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Computer</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Computer.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Computer.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Computer.ReleaseDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Computer.ReleaseDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Computer.Memory)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Computer.Memory)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Computer.Processor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Computer.Processor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Computer.GPU)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Computer.GPU)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Computer.Storage_Info)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Computer.Storage_Info)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Computer.OS)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Computer.OS)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Computer.PSU)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Computer.PSU)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Computer.Motherboard)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Computer.Motherboard)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Computer.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Computer.Price)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Computer.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

@@ -1,0 +1,80 @@
+﻿@page
+@model PurchaseC.Pages.Computers.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Computer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Computer.ID" />
+            <div class="form-group">
+                <label asp-for="Computer.Name" class="control-label"></label>
+                <input asp-for="Computer.Name" class="form-control" />
+                <span asp-validation-for="Computer.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Computer.ReleaseDate" class="control-label"></label>
+                <input asp-for="Computer.ReleaseDate" class="form-control" />
+                <span asp-validation-for="Computer.ReleaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Computer.Memory" class="control-label"></label>
+                <input asp-for="Computer.Memory" class="form-control" />
+                <span asp-validation-for="Computer.Memory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Computer.Processor" class="control-label"></label>
+                <input asp-for="Computer.Processor" class="form-control" />
+                <span asp-validation-for="Computer.Processor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Computer.GPU" class="control-label"></label>
+                <input asp-for="Computer.GPU" class="form-control" />
+                <span asp-validation-for="Computer.GPU" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Computer.Storage_Info" class="control-label"></label>
+                <input asp-for="Computer.Storage_Info" class="form-control" />
+                <span asp-validation-for="Computer.Storage_Info" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Computer.OS" class="control-label"></label>
+                <input asp-for="Computer.OS" class="form-control" />
+                <span asp-validation-for="Computer.OS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Computer.PSU" class="control-label"></label>
+                <input asp-for="Computer.PSU" class="form-control" />
+                <span asp-validation-for="Computer.PSU" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Computer.Motherboard" class="control-label"></label>
+                <input asp-for="Computer.Motherboard" class="form-control" />
+                <span asp-validation-for="Computer.Motherboard" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Computer.Price" class="control-label"></label>
+                <input asp-for="Computer.Price" class="form-control" />
+                <span asp-validation-for="Computer.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
