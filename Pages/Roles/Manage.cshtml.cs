@@ -103,7 +103,7 @@ namespace PurchaseC.Pages.Roles
                 return RedirectToPage("Manage");
             }
 
-            ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(delusername, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(delusername/*, StringComparison.CurrentCultureIgnoreCase   !!!Delete this part to remove error!!! */)).FirstOrDefault();
 
             if (await _userManager.IsInRoleAsync(user, delrolename))
             {
