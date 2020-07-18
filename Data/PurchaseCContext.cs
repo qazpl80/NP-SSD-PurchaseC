@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace PurchaseC.Data
 {
-    public class PurchaseCContext : IdentityDbContext<ApplicationUser>
+    public class PurchaseCContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         public PurchaseCContext (DbContextOptions<PurchaseCContext> options)
             : base(options)

@@ -32,10 +32,11 @@ namespace PurchaseC
 
             services.AddDbContext<PurchaseCContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("PurchaseCContext")));
-            services.AddIdentity<ApplicationUser, Microsoft.AspNetCore.Identity.IdentityRole>()
-               .AddDefaultUI()
-                .AddEntityFrameworkStores<PurchaseCContext>()
-                .AddDefaultTokenProviders();
+
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                    .AddDefaultUI()
+                    .AddEntityFrameworkStores<PurchaseCContext>()
+                    .AddDefaultTokenProviders();
 
         }
 

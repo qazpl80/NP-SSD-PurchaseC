@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PurchaseC.Data;
 using PurchaseC.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PurchaseC.Pages.Computers
 {
+    [Authorize(Roles = "Admin, Member")]
     public class CreateModel : PageModel
     {
         private readonly PurchaseC.Data.PurchaseCContext _context;
