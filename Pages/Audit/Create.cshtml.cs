@@ -21,6 +21,7 @@ namespace PurchaseC.Pages.Audit
 
         public IActionResult OnGet()
         {
+            throw new Exception("Test Error");
             return Page();
         }
 

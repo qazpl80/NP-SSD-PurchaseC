@@ -72,6 +72,7 @@ namespace PurchaseC
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseExceptionHandler("/Error");
+            app.UseHsts();
 
             app.UseHttpsRedirection();
 
