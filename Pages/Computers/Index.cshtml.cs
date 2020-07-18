@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +10,6 @@ using PurchaseC.Models;
 
 namespace PurchaseC.Pages.Computers
 {
-    [Authorize(Roles = "Admin, Member")]
     public class IndexModel : PageModel
     {
         private readonly PurchaseC.Data.PurchaseCContext _context;
@@ -21,22 +19,24 @@ namespace PurchaseC.Pages.Computers
             _context = context;
         }
 
-        public IList<Computer> Computer { get;set; }
+        public IList<Computer> Computer { get; set; }
         [BindProperty(SupportsGet = true)]
         public string SearchString { get; set; }
         // Requires using Microsoft.AspNetCore.Mvc.Rendering;
-        
+        //public SelectList Genres { get; set; }
+        //[BindProperty(SupportsGet = true)]
+        //public string MovieGenre { get; set; }
 
         public async Task OnGetAsync()
         {
-            var computers = from m in _context.Computer
-                         select m;
+            var computers = from c in _context.Computer
+                            select c;
             if (!string.IsNullOrEmpty(SearchString))
             {
                 computers = computers.Where(s => s.Name.Contains(SearchString));
             }
 
-            Computer = await _context.Computer.ToListAsync();
+            Computer = await computers.ToListAsync();
         }
     }
 }

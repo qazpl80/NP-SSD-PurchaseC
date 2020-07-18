@@ -11,7 +11,7 @@ using PurchaseC.Models;
 
 namespace PurchaseC.Pages.Computers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly PurchaseC.Data.PurchaseCContext _context;

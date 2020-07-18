@@ -44,7 +44,7 @@ namespace PurchaseC
                 // options.Conventions.AllowAnonymousToFolder("/Computers");
                 // options.Conventions.AuthorizePage("/Computers/Create");
                 //  options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
-                options.Conventions.AuthorizeFolder("/Computers");
+                //options.Conventions.AuthorizeFolder("/Computers");
             });
 
             services.Configure<IdentityOptions>(options =>

@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace PurchaseC.Pages.Computers
 {
-    [Authorize(Roles = "Admin, Member")]
+    //[Authorize(Roles = "Admin, Member")]
     public class CreateModel : PageModel
     {
         private readonly PurchaseC.Data.PurchaseCContext _context;

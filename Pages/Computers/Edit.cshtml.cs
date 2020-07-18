@@ -12,7 +12,7 @@ using PurchaseC.Models;
 
 namespace PurchaseC.Pages.Computers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class EditModel : PageModel
     {
         private readonly PurchaseC.Data.PurchaseCContext _context;
