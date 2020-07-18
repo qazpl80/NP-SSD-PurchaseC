@@ -61,24 +61,29 @@ namespace PurchaseC.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
             [Display(Name = "Full Name")]
             public string FullName { get; set; }
 
+            [Required]
             [Display(Name = "Birth Date")]
+            [DataType(DataType.Date)]
             public DateTime BirthDate { get; set; }
 
-            [Display(Name = "Age")]
-            public int Age { get; set; }
-
+            [Required]
             [Display(Name = "Contact No.")]
             public int ContactNo { get; set; }
 
+            [Required]
             [Display(Name = "Home Address")]
             public string HomeAddress { get; set; }
 
+            [Required]
             [Display(Name = "Country")]
             public string Country { get; set; }
 
+            [Required]
             [Display(Name = "Citizenship")]
             public string Citizenship { get; set; }
 
@@ -101,7 +106,6 @@ namespace PurchaseC.Areas.Identity.Pages.Account
             {
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, FullName = Input.FullName,
                     BirthDate = Input.BirthDate,
-                    Age = Input.Age,
                     ContactNo = Input.ContactNo,
                     HomeAddress = Input.HomeAddress,
                     Country = Input.Country,
