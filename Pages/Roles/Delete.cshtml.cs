@@ -6,7 +6,6 @@ using PurchaseC.Models;
 
 namespace PurchaseC.Pages.Roles
 {
-
     public class DeleteModel : PageModel
     {
         private readonly RoleManager<ApplicationRole> _roleManager;
