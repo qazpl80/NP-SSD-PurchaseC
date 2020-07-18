@@ -20,5 +20,6 @@ namespace PurchaseC.Data
 
 
         public DbSet<PurchaseC.Models.Computer> Computer { get; set; }
+        public DbSet<PurchaseC.Models.AuditRecord> AuditRecords { get; set; }
     }
 }
