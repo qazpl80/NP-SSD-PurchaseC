@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using PurchaseC.Models;
 
 namespace PurchaseC.Pages.Computers
 {
+    [Authorize(Roles = "Admin, Member")]
     public class IndexModel : PageModel
     {
         private readonly PurchaseC.Data.PurchaseCContext _context;
