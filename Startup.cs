@@ -38,14 +38,14 @@ namespace PurchaseC
                     .AddEntityFrameworkStores<PurchaseCContext>()
                     .AddDefaultTokenProviders();
 
-            services.AddMvc()
-            .AddRazorPagesOptions(options =>
-            {
-                // options.Conventions.AllowAnonymousToFolder("/Computers");
-                // options.Conventions.AuthorizePage("/Computers/Create");
-                //  options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
-                //options.Conventions.AuthorizeFolder("/Computers");
-            });
+            //services.AddMvc()
+            //.AddRazorPagesOptions(options =>
+            //{
+            //    // options.Conventions.AllowAnonymousToFolder("/Computers");
+            //    // options.Conventions.AuthorizePage("/Computers/Create");
+            //    //  options.Conventions.AuthorizeAreaPage("Identity", "/Manage/Accounts");
+            //    //options.Conventions.AuthorizeFolder("/Computers");
+            //});
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -83,14 +83,13 @@ namespace PurchaseC
             }
 
             app.UseHttpsRedirection();
-
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseRouting();
-
+            
             app.UseAuthorization();
 
-            app.UseAuthentication();
+            
 
             app.UseEndpoints(endpoints =>
             {
