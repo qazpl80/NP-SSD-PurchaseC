@@ -39,7 +39,18 @@ namespace PurchaseC.Pages.Computers
             }
 
             _context.Computer.Add(Computer);
-            await _context.SaveChangesAsync();
+            if (await _context.SaveChangesAsync() > 0)
+            {
+                var auditrecord = new AuditRecord();
+                auditrecord.AuditActionType = "Created Computer Record";
+                auditrecord.DateTimeStamp = DateTime.Now;
+                auditrecord.ComputerID = Computer.ID;
+                var userID = User.Identity.Name.ToString();
+                auditrecord.Username = userID;
+                _context.AuditRecords.Add(auditrecord);
+                await _context.SaveChangesAsync();
+            }
+
 
             return RedirectToPage("./Index");
         }
