@@ -9,8 +9,11 @@ namespace PurchaseC.Models
     public class FeedbackForm
     {
         public int ID { get; set; }
+        [Required]
         public string Name { get; set; }
-        public Computer Computer { get; set; }
+        [Required]
+        public string Computer { get; set; }
+        [Required]
         public int Rating { get; set; }
         [StringLength(500)]
         public string Comment { get; set; }
