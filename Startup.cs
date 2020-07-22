@@ -71,16 +71,18 @@ namespace PurchaseC
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseStatusCodePages("text/html", "<h1 style='font-size: 120px;font-family: Tahoma;color: #ff0033'> Error in accessing page!</h1> <h2 style='font-size: 60px;font-family: Tahoma'>Status Code: {0}</h2>");
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseStatusCodePages("text/html", "<h1 style='font-size: 120px;font-family: Tahoma;color: #ff0033'> Error in accessing page!</h1> <h2 style='font-size: 60px;font-family: Tahoma'>Status Code: {0}</h2>");
-                app.UseExceptionHandler("/Error");
-            }
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseStatusCodePages("text/html", "<h1 style='font-size: 120px;font-family: Tahoma;color: #ff0033'> Error in accessing page!</h1> <h2 style='font-size: 60px;font-family: Tahoma'>Status Code: {0}</h2>");
+            //    app.UseDeveloperExceptionPage();
+            //}
+            //else
+            //{
+            //    app.UseStatusCodePages("text/html", "<h1 style='font-size: 120px;font-family: Tahoma;color: #ff0033'> Error in accessing page!</h1> <h2 style='font-size: 60px;font-family: Tahoma'>Status Code: {0}</h2>");
+            //    app.UseExceptionHandler("/Error");
+            //}
+            app.UseStatusCodePages("text/html", "<h1 style='font-size: 120px;font-family: Tahoma;color: #ff0033'> Error in accessing page!</h1> <h2 style='font-size: 60px;font-family: Tahoma'>Status Code: {0}</h2>");
+            app.UseExceptionHandler("/Error");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
