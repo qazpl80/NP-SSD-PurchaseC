@@ -1,0 +1,59 @@
+﻿@page
+@model PurchaseC.Pages.Feedback.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>FeedbackForm</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FeedbackForm.Name" class="control-label"></label>
+                <input asp-for="FeedbackForm.Name" class="form-control" />
+                <span asp-validation-for="FeedbackForm.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeedbackForm.Computer" class="control-label"></label>
+                <input asp-for="FeedbackForm.Computer" class="form-control" />
+                <span asp-validation-for="FeedbackForm.Computer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeedbackForm.Rating" class="control-label"></label><br />
+                <input type="radio" asp-for="FeedbackForm.Rating" value="5" />
+                <label>Excellent</label><br />
+                <input type="radio" asp-for="FeedbackForm.Rating" value="4" />
+                <label>Very Good</label><br />
+                <input type="radio" asp-for="FeedbackForm.Rating" value="3" />
+                <label>Good</label><br />
+                <input type="radio" asp-for="FeedbackForm.Rating" value="2" />
+                <label>Poor</label><br />
+                <input type="radio" asp-for="FeedbackForm.Rating" value="1" />
+                <label>Very Poor</label><br />
+                <span asp-validation-for="FeedbackForm.Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeedbackForm.Comment" class="control-label"></label>
+                <input asp-for="FeedbackForm.Comment" class="form-control" />
+                <span asp-validation-for="FeedbackForm.Comment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
