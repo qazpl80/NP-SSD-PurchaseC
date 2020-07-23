@@ -39,7 +39,17 @@ namespace PurchaseC.Pages.Feedback
             }
 
             _context.FeedbackForm.Add(FeedbackForm);
-            await _context.SaveChangesAsync();
+            if (await _context.SaveChangesAsync() > 0)
+            {
+                var auditrecord = new AuditRecord();
+                auditrecord.AuditActionType = "Feedback Form Created";
+                auditrecord.DateTimeStamp = DateTime.Now;
+                auditrecord.ComputerID = FeedbackForm.ID;
+                var userID = User.Identity.Name.ToString();
+                auditrecord.Username = userID;
+                _context.AuditRecords.Add(auditrecord);
+                await _context.SaveChangesAsync();
+            }
 
             return RedirectToPage("./Index");
         }

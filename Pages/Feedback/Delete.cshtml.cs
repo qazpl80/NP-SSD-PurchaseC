@@ -52,7 +52,17 @@ namespace PurchaseC.Pages.Feedback
             if (FeedbackForm != null)
             {
                 _context.FeedbackForm.Remove(FeedbackForm);
-                await _context.SaveChangesAsync();
+                if (await _context.SaveChangesAsync() > 0)
+                {
+                    var auditrecord = new AuditRecord();
+                    auditrecord.AuditActionType = "Feedback Form Deleted";
+                    auditrecord.DateTimeStamp = DateTime.Now;
+                    auditrecord.ComputerID = FeedbackForm.ID;
+                    var userID = User.Identity.Name.ToString();
+                    auditrecord.Username = userID;
+                    _context.AuditRecords.Add(auditrecord);
+                    await _context.SaveChangesAsync();
+                }
             }
 
             return RedirectToPage("./Index");

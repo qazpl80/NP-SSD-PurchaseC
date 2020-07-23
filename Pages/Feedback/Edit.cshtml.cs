@@ -54,7 +54,17 @@ namespace PurchaseC.Pages.Feedback
 
             try
             {
-                await _context.SaveChangesAsync();
+                if (await _context.SaveChangesAsync() > 0)
+                {
+                    var auditrecord = new AuditRecord();
+                    auditrecord.AuditActionType = "Feedback Form Edited";
+                    auditrecord.DateTimeStamp = DateTime.Now;
+                    auditrecord.ComputerID = FeedbackForm.ID;
+                    var userID = User.Identity.Name.ToString();
+                    auditrecord.Username = userID;
+                    _context.AuditRecords.Add(auditrecord);
+                    await _context.SaveChangesAsync();
+                }
             }
             catch (DbUpdateConcurrencyException)
             {

@@ -20,7 +20,7 @@ namespace PurchaseC.Models
         [DataType(DataType.DateTime)]
         public DateTime DateTimeStamp { get; set; }
 
-        [Display(Name = "Computer ")]
-        public int ComputerID { get; set; }//WHO EVER IS IN CHARGE OF COMPUTER CLASS PLS DELETE THIS COMMENT IF THIS IS TO YOUR APPROVAL-ntk
+        [Display(Name = "ID")]
+        public int ComputerID { get; set; }
     }
 }
