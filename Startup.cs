@@ -13,6 +13,8 @@ using PurchaseC.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using PurchaseC.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using PurchaseC.Services;
 
 namespace PurchaseC
 {
@@ -32,11 +34,16 @@ namespace PurchaseC
 
             services.AddDbContext<PurchaseCContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("PurchaseCContext")));
+            
+
 
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                     .AddDefaultUI()
                     .AddEntityFrameworkStores<PurchaseCContext>()
                     .AddDefaultTokenProviders();
+            
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.Configure<AuthMessageSenderOptions>(Configuration);
 
             //services.AddMvc()
             //.AddRazorPagesOptions(options =>
