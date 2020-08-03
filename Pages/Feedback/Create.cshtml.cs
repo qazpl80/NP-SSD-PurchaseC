@@ -11,7 +11,7 @@ using PurchaseC.Models;
 
 namespace PurchaseC.Pages.Feedback
 {
-    [Authorize(Roles = "Admin, Member")]
+    [Authorize]
     public class CreateModel : PageModel
     {
         private readonly PurchaseC.Data.PurchaseCContext _context;
