@@ -21,14 +21,16 @@ namespace PurchaseC.Areas.Identity.Pages.Account
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly PurchaseC.Data.PurchaseCContext _context;
 
         public LoginModel(SignInManager<ApplicationUser> signInManager, 
             ILogger<LoginModel> logger,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,PurchaseC.Data.PurchaseCContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            _context = context;
         }
 
         [BindProperty]
@@ -84,8 +86,27 @@ namespace PurchaseC.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    var auditrecord = new AuditRecord();
+                    auditrecord.AuditActionType = "Successful Login";
+                    auditrecord.DateTimeStamp = DateTime.Now;
+                    auditrecord.ComputerID = 0;
+                    auditrecord.Username = Input.Email;
+                    _context.AuditRecords.Add(auditrecord);
+                    await _context.SaveChangesAsync();
                     return LocalRedirect(returnUrl);
                 }
+                else
+                {
+                    // Login failed attempt - create an audit record
+                    var auditrecord = new AuditRecord();
+                    auditrecord.AuditActionType = "Failed Login";
+                    auditrecord.DateTimeStamp = DateTime.Now;
+                    auditrecord.ComputerID = 0;                    
+                    auditrecord.Username = Input.Email;                    
+                    _context.AuditRecords.Add(auditrecord);
+                    await _context.SaveChangesAsync();
+                }
+
                 if (result.RequiresTwoFactor)
                 {
                     return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
