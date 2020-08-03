@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -11,7 +12,7 @@ using PurchaseC.Models;
 
 namespace PurchaseC.Pages.Computers
 {
-    [Authorize(Roles = "Admin, Member")]
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly PurchaseC.Data.PurchaseCContext _context;
@@ -23,6 +24,8 @@ namespace PurchaseC.Pages.Computers
 
         public IList<Computer> Computer { get; set; }
         [BindProperty(SupportsGet = true)]
+
+        [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Entered Text contain Invalid characters")]
         public string SearchString { get; set; }
         // Requires using Microsoft.AspNetCore.Mvc.Rendering;
         //public SelectList Genres { get; set; }

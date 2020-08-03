@@ -6,11 +6,13 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+<h1>Feedbacks</h1>
+@if (User.Identity.IsAuthenticated)
+{
+    <p>
+        <a asp-page="Create">Post a Feedback</a>
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
