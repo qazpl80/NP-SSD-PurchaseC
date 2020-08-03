@@ -63,6 +63,7 @@ namespace PurchaseC.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             [Required]
+            [RegularExpression(@"[A-Za-z ]{1,100}", ErrorMessage = "Full Name should contain alphabets only")]
             [Display(Name = "Full Name")]
             public string FullName { get; set; }
 
@@ -72,18 +73,22 @@ namespace PurchaseC.Areas.Identity.Pages.Account
             public DateTime BirthDate { get; set; }
 
             [Required]
+            [RegularExpression(@"[\d ]{7,15}", ErrorMessage = "Contact Number should be between 7-15 digits and numbers only")]
             [Display(Name = "Contact No.")]
             public int ContactNo { get; set; }
 
             [Required]
+            [RegularExpression(@"[A-Za-z0-9 \-\#]*", ErrorMessage = "Home Address should contain only from the following symbols: \"#\", \"-\" , Alphabets and/or numbers")]
             [Display(Name = "Home Address")]
             public string HomeAddress { get; set; }
 
             [Required]
+            [RegularExpression(@"[A-Za-z ]{1,100}", ErrorMessage = "Country should contain alphabets and numbers only")]
             [Display(Name = "Country")]
             public string Country { get; set; }
 
             [Required]
+            [RegularExpression(@"[A-Za-z ]{1,100}", ErrorMessage = "Citizenship should contain alphabets only")]
             [Display(Name = "Citizenship")]
             public string Citizenship { get; set; }
 
