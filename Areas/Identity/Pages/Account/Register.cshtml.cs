@@ -83,7 +83,7 @@ namespace PurchaseC.Areas.Identity.Pages.Account
             public string HomeAddress { get; set; }
 
             [Required]
-            [RegularExpression(@"[A-Za-z ]{1,100}", ErrorMessage = "Country should contain alphabets and numbers only")]
+            [RegularExpression(@"[A-Za-z ]{1,100}", ErrorMessage = "Country should contain alphabets only")]
             [Display(Name = "Country")]
             public string Country { get; set; }
 
