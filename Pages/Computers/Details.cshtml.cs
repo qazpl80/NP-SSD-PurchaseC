@@ -11,7 +11,7 @@ using PurchaseC.Models;
 
 namespace PurchaseC.Pages.Computers
 {
-    [Authorize(Roles = "Admin, Member")]
+    [Authorize]
     public class DetailsModel : PageModel
     {
         private readonly PurchaseC.Data.PurchaseCContext _context;
