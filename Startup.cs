@@ -46,6 +46,15 @@ namespace PurchaseC
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
 
+            services.AddAuthentication()
+                    .AddGoogle(options =>
+                    {
+                        IConfigurationSection googleAuthNSection =
+                            Configuration.GetSection("Authentication:Google");
+
+                        options.ClientId = googleAuthNSection["ClientId"];
+                        options.ClientSecret = googleAuthNSection["ClientSecret"];
+                    });
             //services.AddMvc()
             //.AddRazorPagesOptions(options =>
             //{
