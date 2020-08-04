@@ -8,9 +8,6 @@
 
 <h1>Audit Records</h1>
 
-<p>
-    <a asp-page="Create">Create Audit Record</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -45,9 +42,7 @@
                 @Html.DisplayFor(modelItem => item.ComputerID)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Audit_ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Audit_ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Audit_ID">Delete</a>
+                <a asp-page="./Details" asp-route-id="@item.Audit_ID">Details</a>
             </td>
         </tr>
 }
