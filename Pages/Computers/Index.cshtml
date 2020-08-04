@@ -19,7 +19,6 @@
 </form>
 
 <table class="table">
-    <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Computer[0].Name)
@@ -31,8 +30,6 @@
                 @Html.DisplayNameFor(model => model.Computer[0].Price)
             </th>
         </tr>
-    </thead>
-    <tbody>
         @foreach (var item in Model.Computer)
         {
             <tr>
@@ -52,5 +49,4 @@
                 </td>
             </tr>
         }
-    </tbody>
 </table>
