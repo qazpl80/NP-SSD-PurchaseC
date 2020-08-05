@@ -12,9 +12,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using PurchaseC.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace PurchaseC.Areas.Identity.Pages.Account
 {
+
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
@@ -22,15 +24,17 @@ namespace PurchaseC.Areas.Identity.Pages.Account
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
         private readonly PurchaseC.Data.PurchaseCContext _context;
+        private readonly IHttpContextAccessor _accessor;
 
         public LoginModel(SignInManager<ApplicationUser> signInManager, 
             ILogger<LoginModel> logger,
-            UserManager<ApplicationUser> userManager,PurchaseC.Data.PurchaseCContext context)
+            UserManager<ApplicationUser> userManager,PurchaseC.Data.PurchaseCContext context, IHttpContextAccessor HttpContextAccessor)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _context = context;
+            _accessor = HttpContextAccessor;
         }
 
         [BindProperty]
@@ -73,7 +77,8 @@ namespace PurchaseC.Areas.Identity.Pages.Account
 
             ReturnUrl = returnUrl;
         }
-
+        
+        
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
@@ -83,11 +88,13 @@ namespace PurchaseC.Areas.Identity.Pages.Account
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                               
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
                     var auditrecord = new AuditRecord();
-                    auditrecord.AuditActionType = "Successful Login";
+                    string ip = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
+                    auditrecord.AuditActionType = "Successful Login from "+ip;
                     auditrecord.DateTimeStamp = DateTime.Now;
                     auditrecord.ComputerID = 0;
                     auditrecord.Username = Input.Email;
@@ -95,11 +102,13 @@ namespace PurchaseC.Areas.Identity.Pages.Account
                     await _context.SaveChangesAsync();
                     return LocalRedirect(returnUrl);
                 }
+
                 else
                 {
                     // Login failed attempt - create an audit record
                     var auditrecord = new AuditRecord();
-                    auditrecord.AuditActionType = "Failed Login";
+                    string ip = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
+                    auditrecord.AuditActionType = "Failed Login from "+ip;
                     auditrecord.DateTimeStamp = DateTime.Now;
                     auditrecord.ComputerID = 0;                    
                     auditrecord.Username = Input.Email;                    
