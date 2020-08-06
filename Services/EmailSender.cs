@@ -17,7 +17,7 @@ namespace PurchaseC.Services
 
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            return Execute("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", subject, message, email);
+            return Execute(Options.SendGridKey, subject, message, email);
         }
 
         public Task Execute(string apiKey, string subject, string message, string email)
@@ -25,7 +25,7 @@ namespace PurchaseC.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("s10196605@connect.np.edu.sg", "PurchaseC"),
+                From = new EmailAddress("s10196605@connect.np.edu.sg", Options.SendGridUser),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
