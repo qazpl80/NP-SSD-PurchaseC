@@ -24,4 +24,8 @@
     <PackageReference Include="SendGrid" Version="9.19.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
 </Project>
