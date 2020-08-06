@@ -13,28 +13,28 @@ using PurchaseC.Data;
 namespace PurchaseC.Authorization
 {
 
-    public class ContactAdministratorsAuthorizationHandler
-                    : AuthorizationHandler<OperationAuthorizationRequirement, Computer>
-    {
-        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,OperationAuthorizationRequirement requirement,Computer resource)
-        {
-            if (context.User == null)
-            {
-                return Task.CompletedTask;
-            }
+    //public class ContactAdministratorsAuthorizationHandler
+    //                : AuthorizationHandler<OperationAuthorizationRequirement, Computer>
+    //{
+    //    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context,OperationAuthorizationRequirement requirement,Computer resource)
+    //    {
+    //        if (context.User == null)
+    //        {
+    //            return Task.CompletedTask;
+    //        }
 
-            // Administrators can do anything.
-            if (context.User.IsInRole("Admin"))
-            {
-                context.Succeed(requirement);
-            }
-            /*else if (_userManager.GetUserId(context.User) == resource.OwnerID.
-            {
-                context.Succeed(requirement);
-            }*/
+    //        // Administrators can do anything.
+    //        if (context.User.IsInRole("Admin"))
+    //        {
+    //            context.Succeed(requirement);
+    //        }
+    //        /*else if (_userManager.GetUserId(context.User) == resource.OwnerID.
+    //        {
+    //            context.Succeed(requirement);
+    //        }*/
            
 
-            return Task.CompletedTask;
-        }
-    }
+    //        return Task.CompletedTask;
+    //    }
+    //}
 }
