@@ -24,4 +24,14 @@
     <PackageReference Include="SendGrid" Version="9.19.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\uploads\359550_screenshots_20200721011020_1_b9f1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

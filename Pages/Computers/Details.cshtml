@@ -2,7 +2,7 @@
 @model PurchaseC.Pages.Computers.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Details";    
 }
 
 <h1>Details</h1>
@@ -10,6 +10,7 @@
 <div>
     <h4>Computer</h4>
     <hr />
+    <img src="@Model.imgfile" width="300"/>
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Computer.Name)

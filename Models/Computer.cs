@@ -5,11 +5,15 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
+using Microsoft.AspNetCore.Http;
 
 namespace PurchaseC.Models
 {
     public class Computer
     {
+        [DisplayName("Images")]
+        public string Images { get; set; }
+
         public int ID { get; set; }
 
         [DisplayName("Name")]
@@ -43,5 +47,7 @@ namespace PurchaseC.Models
         [Column(TypeName = "decimal(18, 2)")]
         [DisplayName("Price")]
         public decimal Price { get; set; }
+
+        
     }
 }
