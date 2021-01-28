@@ -25,7 +25,7 @@ namespace PurchaseC.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("s10196605@connect.np.edu.sg", Options.SendGridUser),
+                From = new EmailAddress("-", Options.SendGridUser),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
